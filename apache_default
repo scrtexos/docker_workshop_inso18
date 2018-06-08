@@ -1,0 +1,60 @@
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+
+        DocumentRoot /var/www/html
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride All
+        </Directory>
+        <Directory /var/www/html>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+	#
+	# Set HTTPS environment variable if we came in over secure
+	#  channel.
+	SetEnvIf x-forwarded-proto https HTTPS=on
+
+</VirtualHost>
+
+Listen 8080
+<VirtualHost *:8080>
+        ServerAdmin webmaster@localhost
+
+        DocumentRoot /var/www/html/543543534654654654
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride All
+        </Directory>
+        <Directory /var/www/html/543543534654654654>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error_8080.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access_8080.log combined
+
+	#
+	# Set HTTPS environment variable if we came in over secure
+	#  channel.
+	SetEnvIf x-forwarded-proto https HTTPS=on
+
+</VirtualHost>
