@@ -25,6 +25,7 @@ RUN a2enmod rewrite
 
 # Configure /app folder with sample app
 RUN mkdir -p /app
+RUN echo 1
 RUN git clone https://github.com/scrtexos/workshop-inso18.git /app
 RUN rm -rf /var/www/html && ln -s /app /var/www/html
 RUN find /app/ -name db -exec chown -R www-data:www-data {} \;
@@ -35,7 +36,7 @@ RUN php5enmod mcrypt
 RUN apt-get update && apt-get install -y php5-xsl
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y mysql-server-5.6
-RUN apt-get install -y php5-mysql
+RUN apt-get install -y php5-mysql php5-curl
 
 RUN echo "allow_url_include = On" >> /etc/php5/apache2/php.ini
 

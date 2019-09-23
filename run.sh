@@ -4,7 +4,8 @@ if [ ! -f /.root_pw_set ]; then
     /set_root_pw.sh
 fi
 cd /app/ && git pull
-ln -s /root/phantomjs-2.1.1-linux-x86_64/bin/phantomjs phantomjs
+cp /root/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /tmp/phantomjs
+ln -s /tmp/phantomjs /usr/bin/phantomjs
 find /app/ -name db -exec rm {}/.htdb.db \;
 find /app/ -name db -exec chown -R www-data:www-data {} \;
 /usr/sbin/sshd
